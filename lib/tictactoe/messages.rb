@@ -10,20 +10,21 @@ module Messages
     ██║   ██║╚██████╗        ██║   ██║  ██║╚██████╗        ██║   ╚██████╔╝███████╗
     ╚═╝   ╚═╝ ╚═════╝        ╚═╝   ╚═╝  ╚═╝ ╚═════╝        ╚═╝    ╚═════╝ ╚══════╝
         ".yellow
+        puts "\t\tWelcome to Tic-Tac-Toe for two players\n".yellow
         put_manual
-        puts "\nIf you have any doubt, you can read these instructions again by typing #{"help".yellow}. Let's go!".italic
+        puts "\nIf you have any doubt, you can read these instructions again by typing #{"help".yellow}. Let's go!"
     end
 
     def Messages.put_manual
-        puts "When prompted, enter the coordinate in which you want to make your move.".italic
-        puts "Coordinates are a pair of numbers beetween #{MIN_INDEX} and #{MAX_INDEX}.".italic
-        puts "Input them in the format #{"##".bold}. Here are some examples:\n".italic
-        puts "\t#{"00".green} -> #{"Correct".green}".italic
-        puts "\t#{"10".green} -> #{"Correct".green}".italic
-        puts "\t#{"22".green} -> #{"Correct".green}".italic
-        puts "\t#{"30".red} -> #{"Incorrect".red}".italic
-        puts "\t#{"05".red} -> #{"Incorrect".red}".italic
-        puts "\t#{"0w".red} -> #{"Incorrect".red}".italic
+        puts "When prompted, enter the coordinate in which you want to make your move."
+        puts "Coordinates are a pair of numbers beetween #{MIN_INDEX} and #{MAX_INDEX}."
+        puts "Input them in the format #{"##".bold}. Here are some examples:\n"
+        puts "\t#{"00".green} -> #{"Correct".green}"
+        puts "\t#{"10".green} -> #{"Correct".green}"
+        puts "\t#{"22".green} -> #{"Correct".green}"
+        puts "\t#{"30".red} -> #{"Incorrect".red}"
+        puts "\t#{"05".red} -> #{"Incorrect".red}"
+        puts "\t#{"0w".red} -> #{"Incorrect".red}"
     end
 
     def Messages.put_get_input(mark)
