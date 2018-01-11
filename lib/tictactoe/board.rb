@@ -1,10 +1,13 @@
 require_relative 'constants'
 
 class Board
+    @output
+    @moves
     attr_accessor :can_move
     attr_accessor :winner
 
-    def initialize
+    def initialize(output)
+        @output = output
         @moves = [
             [:empty, :empty, :empty],
             [:empty, :empty, :empty],
@@ -39,18 +42,19 @@ class Board
         return nil
     end
 
-    def print_moves
-        puts
+    def show_moves
+        board = "\n"
         @moves.each_with_index { |row, index| 
-            print "\t"
+            board << "\t"
             row.each_with_index { |mark, index|
-                print " #{Messages.string_for_mark(mark)} "
-                print BOARD_VERTICAL_SEPARATOR.white if index < MAX_INDEX
+                board << " #{Messages.string_for_mark(mark)} "
+                board << BOARD_VERTICAL_SEPARATOR.white if index < MAX_INDEX
             }
-            puts
-            puts "\t#{BOARD_HORIZONTAL_SEPARATOR}".white if index < MAX_INDEX
+            board << "\n"
+            board << "\t#{BOARD_HORIZONTAL_SEPARATOR}".white if index < MAX_INDEX
         }
-        puts
+        board << "\n"
+        @output.show(board)
     end
 
     private def check_row(row)

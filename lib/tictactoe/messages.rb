@@ -1,8 +1,9 @@
 require_relative 'constants'
 
 module Messages
-    def Messages.put_start
-        puts "
+    def Messages.start
+        message = ""
+        message << "
  ████████╗██╗ ██████╗     ████████╗ █████╗  ██████╗     ████████╗ ██████╗ ███████╗
  ╚══██╔══╝██║██╔════╝     ╚══██╔══╝██╔══██╗██╔════╝     ╚══██╔══╝██╔═══██╗██╔════╝
     ██║   ██║██║     █████╗  ██║   ███████║██║     █████╗  ██║   ██║   ██║█████╗  
@@ -10,43 +11,48 @@ module Messages
     ██║   ██║╚██████╗        ██║   ██║  ██║╚██████╗        ██║   ╚██████╔╝███████╗
     ╚═╝   ╚═╝ ╚═════╝        ╚═╝   ╚═╝  ╚═╝ ╚═════╝        ╚═╝    ╚═════╝ ╚══════╝
         ".yellow
-        puts "\t\tWelcome to Tic-Tac-Toe for two players\n".yellow
-        put_manual
-        puts "\nIf you have any doubt, you can read these instructions again by typing #{"help".yellow}. Let's go!"
+        message << "\n\t\tWelcome to Tic-Tac-Toe for two players\n".yellow
+        message << manual
+        message << "If you have any doubt, you can read these instructions again by typing #{"help".yellow}. Let's go!\n"
+        return message
     end
 
-    def Messages.put_manual
-        puts "When prompted, enter the coordinate in which you want to make your move."
-        puts "Coordinates are a pair of numbers beetween #{MIN_INDEX} and #{MAX_INDEX}."
-        puts "Input them in the format #{"##".bold}. Here are some examples:\n"
-        puts "\t#{"00".green} -> #{"Correct".green}"
-        puts "\t#{"10".green} -> #{"Correct".green}"
-        puts "\t#{"22".green} -> #{"Correct".green}"
-        puts "\t#{"30".red} -> #{"Incorrect".red}"
-        puts "\t#{"05".red} -> #{"Incorrect".red}"
-        puts "\t#{"0w".red} -> #{"Incorrect".red}"
+    def Messages.manual
+        message = ""
+        message << "\nWhen prompted, enter the coordinate in which you want to make your move.\n"
+        message << "Coordinates are a pair of numbers beetween #{MIN_INDEX} and #{MAX_INDEX}.\n"
+        message << "Input them in the format #{"##".bold}. Here are some examples:\n\n"
+        message << "\t#{"00".green} -> #{"Correct".green}\n"
+        message << "\t#{"10".green} -> #{"Correct".green}\n"
+        message << "\t#{"22".green} -> #{"Correct".green}\n"
+        message << "\t#{"30".red} -> #{"Incorrect".red}\n"
+        message << "\t#{"05".red} -> #{"Incorrect".red}\n"
+        message << "\t#{"0w".red} -> #{"Incorrect".red}\n\n"
+        return message
     end
 
-    def Messages.put_get_input(mark)
-        print "Enter move for ".white
-        print string_for_mark(mark)
-        print ": ".white
+    def Messages.get_input(mark)
+        message = ""
+        message << "Enter move for ".white
+        message << string_for_mark(mark)
+        message << ": ".white
+        return message
     end
 
-    def Messages.put_input_error
-        puts "Position is wrong, values have to be between #{MIN_INDEX} and #{MAX_INDEX} in the format ##".red        
+    def Messages.input_error
+        return "Position is wrong, values have to be between #{MIN_INDEX} and #{MAX_INDEX} in the format ##\n".red        
     end
 
-    def Messages.put_position_error
-        puts "Position is already taken, please try another".red
+    def Messages.position_error
+        return "Position is already taken, please try another\n".red
     end
 
-    def Messages.put_winner_message(winner)
-        puts "\n\t#{string_for_mark(winner)} WINS!\n\n".green
+    def Messages.winner_message(winner)
+        return "\n\t#{string_for_mark(winner)} WINS!\n\n".green
     end
     
-    def Messages.put_no_more_moves
-        puts "\n\tNO MORE MOVES AVAILABLE :(\n\n".red
+    def Messages.no_more_moves
+        return "\n\tNO MORE MOVES AVAILABLE :(\n\n".red
     end
 
     def Messages.string_for_mark(mark)
