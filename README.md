@@ -21,6 +21,5 @@ And then run `tictactoe`.
 
 ## // ToDo
 
-- Decouple CLI presentation from game logic.
 - Add one player mode.
 - Analyze board and end game if no winning movements.
