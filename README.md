@@ -14,7 +14,7 @@ Or generate the `tictactoe` gem and install it:
 
 ```
 gem build tictactoe.gemspec
-gem install tictactoe-0.0.1.gem
+gem install tictactoe-[VERSION].gem
 ```
 
 And then run `tictactoe`.
