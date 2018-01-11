@@ -4,8 +4,6 @@ require_relative 'doubles'
 require_relative '../lib/tictactoe/board'
 
 class BoardTest < Minitest::Test
-    @board
-
     def setup
         @board = Board.new(DummyOutput.new)
     end

@@ -1,11 +1,6 @@
 require_relative 'constants'
 
 class Board
-    @output
-    @moves
-    attr_accessor :can_move
-    attr_accessor :winner
-
     def initialize(output)
         @output = output
         @moves = [
@@ -44,14 +39,14 @@ class Board
 
     def show_moves
         board = "\n"
-        @moves.each_with_index { |row, index| 
+        @moves.each_with_index { |row, row_index| 
             board << "\t"
-            row.each_with_index { |mark, index|
+            row.each_with_index { |mark, col_index|
                 board << " #{Messages.string_for_mark(mark)} "
-                board << BOARD_VERTICAL_SEPARATOR.white if index < MAX_INDEX
+                board << BOARD_VERTICAL_SEPARATOR.white if col_index < MAX_INDEX
             }
             board << "\n"
-            board << "\t#{BOARD_HORIZONTAL_SEPARATOR}".white if index < MAX_INDEX
+            board << "\t#{BOARD_HORIZONTAL_SEPARATOR}".white if row_index < MAX_INDEX
         }
         board << "\n"
         @output.show(board)
@@ -77,11 +72,12 @@ class Board
     end
 
     private def sum_points(moves)
-        def points_for_mark(mark)
-            return EMPTY_POINTS if mark == :empty
-            return CROSS_POINT if mark == :cross
-            return CIRCLE_POINT if mark == :circle
-        end
         moves.inject(0) { |sum, mark| sum + points_for_mark(mark) }
+    end
+
+    private def points_for_mark(mark)
+        return EMPTY_POINTS if mark == :empty
+        return CROSS_POINT if mark == :cross
+        return CIRCLE_POINT if mark == :circle
     end
 end

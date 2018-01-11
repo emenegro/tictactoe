@@ -2,9 +2,6 @@ require_relative 'constants'
 require_relative 'messages'
 
 class CoordsProvider
-    @input
-    @output
-
     def initialize(input, output)
         @input = input
         @output = output
